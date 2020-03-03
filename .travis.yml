@@ -29,13 +29,12 @@ script:
 # before_deploy:
 
 deploy:
-  - provider: heroku
+  - provider: heroku:git
     edge: true # this uses the travis v2 pipeline
     app: boilerplated
     cleanup: false
     on:
       branch: master
-    run: npx semantic-release
   # - provider: heroku
   #   edge: true # this uses the travis v2 pipeline
   #   app: boilerplated-dev
