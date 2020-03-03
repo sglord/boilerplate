@@ -1,0 +1,73 @@
+language: node_js
+node_js:
+  - 12
+
+# cache:
+#   directories:
+#     - "$HOME/.npm" // npm ci erases old node modules
+
+# stages:
+
+# services:
+#   - docker
+#   - postgresql
+
+# before_install:
+
+# install:
+
+# before_script:
+
+script:
+  - npm run build
+  - npm test
+
+# after_success:
+
+# after_failure:
+
+# before_deploy:
+
+deploy:
+  - provider: heroku
+    edge: true # this uses the travis v2 pipeline
+    app: boilerplated
+    cleanup: false
+    on:
+      branch: master
+    run: npx semantic-release
+  # - provider: heroku
+  #   edge: true # this uses the travis v2 pipeline
+  #   app: boilerplated-dev
+  #   cleanup: false
+  #   on:
+  #     branch: develop
+  # - provider: heroku
+  #   edge: true # this uses the travis v2 pipeline
+  #   app: boilerplated-staging
+  #   cleanup: false
+  #   on:
+  #     branch: develop
+  # - provider: heroku
+  #   edge: true # this uses the travis v2 pipeline
+  #   app: boilerplated-test
+  #   cleanup: false
+  #   on:
+  #     branch: develop
+  # aws configs
+  # - provider: s3 # s3 || Elastic Beanstalk || CodeDeploy
+  #   access_key_id: <encrypted access_key_id>
+  #   secret_access_key: <encrypted secret_access_key>
+  #   bucket: <bucket>
+  #   region: us-east-1
+  #   app: boilerplate #Elastic Beanstalk application name
+  #   application: boilerplate # CodeDeploy
+  #   revision_type: github # CodeDeploy
+  #   repository: <github repository> # CodeDeploy
+  #   commit_id: <commit-hash> # CodeDeploy
+  #   edge: true
+  #   description: Basic App description. #Elastic Beanstalk
+  #   label: 1.0.0 #Elastic Beanstalk
+  #   on:
+  #     branch: master
+  # after_deploy:
