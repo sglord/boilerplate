@@ -17,16 +17,12 @@ plugins:
   - jest
   - babel
 
-# settings:
-
 env:
   browser: true
   node: true
   es6: true
   jest: true
   jest/globals: true
-
-# globals:
 
 parserOptions:
   sourceType: module
@@ -35,13 +31,18 @@ parserOptions:
     jsx: true
 
 rules:
+  # this should be removed at some point
+  # current workaround is to have second package.json
+  # https://github.com/eslint/eslint/issues/12319
+  # silences  errors related stemming from second package.json
+  import/no-extraneous-dependencies: 0
   prettier/prettier: warn
   comma-dangle:
     [
       'warn',
       {
-        arrays: 'always',
-        objects: 'always',
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
         imports: 'never',
         exports: 'never',
         functions: 'never',
@@ -49,6 +50,7 @@ rules:
     ]
   semi: 1
   no-console: 0
+# globals:
 # settings:
 # import/resolver:
 #   node:

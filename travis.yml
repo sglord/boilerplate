@@ -3,9 +3,10 @@ node_js:
   - 12
   - 10
 
-cache:
-  directories:
-    - 'node_modules'
+# cache:
+#   directories:
+#     - "$HOME/.npm" // npm ci erases old node modules
+
     # stages:
 #   - name: "unit tests"
 #   if: branch = master
@@ -18,12 +19,13 @@ cache:
 #   - npm i -g npm@latest
 
 # install:
-#   - npm ci
+#   - npm ci # this is default now
 
 # before_script:
 
-# script:
-#   - npm test
+script:
+  - npm test
+  - npm run build
 
 # after_success:
 
@@ -31,7 +33,14 @@ cache:
 
 # before_deploy:
 
-# deploy:
+deploy:
+- provider: heroku:git
+    api_key: <encrypted api_key>
+    edge: true
+    app: boilerplate
+    on:
+      branch: master
+
 #   - provider: s3 # s3 || Elastic Beanstalk || CodeDeploy
 #     access_key_id: <encrypted access_key_id>
 #     secret_access_key: <encrypted secret_access_key>
@@ -45,13 +54,6 @@ cache:
 #     edge: true
 #     description: Basic App description. #Elastic Beanstalk
 #     label: 1.0.0 #Elastic Beanstalk
-#     on:
-#       branch: master
-
-#   - provider: heroku:git
-#   api_key: <encrypted api_key>
-#     edge: true
-#     app: boilerplate
 #     on:
 #       branch: master
 

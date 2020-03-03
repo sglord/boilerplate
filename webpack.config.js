@@ -1,22 +1,32 @@
-// const path = require('path');
+// add support for es6 in node
+// add hot module injection reloading
+// add code splitting/lazy/chunking
+// make own babel plugin
+
+const path = require('path');
+// const webpack = require('webpack');
 
 module.exports = {
-	mode: 'development', // "production" | "development" | "none"
+	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 	entry: './src/client/index.jsx',
 	// entry:{
 	//   app: './index.js'
 	// },
+	// devtool: false,
+	devtool: 'eval-source-map',
 	output: {
-		path: `${__dirname}/static`,
+		path: path.resolve(__dirname, 'static'),
 		// filename: "[name].[chunkhash:8].js"
 		filename: '[name].bundle.js',
 	},
 	resolve: {
-		extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
+		extensions: ['.js', '.jsx', '.json' /* '.ts', '.tsx' */],
 	},
-	devtool: 'eval-source-map',
+	experiments: {
+		mjs: true,
+	},
 	stats: {
-		preset: 'errors-warnings',
+		// preset: 'errors-warnings',
 		colors: true,
 		// context: '../src/components',
 		builtAt: true,
@@ -26,11 +36,11 @@ module.exports = {
 		logging: 'warn',
 		performance: true,
 	},
-	bail: true, // boolean,
-	cache: false, // boolean,
+	// bail: true, // boolean,
+	// cache: false, // boolean,
 	watchOptions: {
-		poll: true,
-		// poll: 2500,
+		// poll: true,
+		poll: 500,
 		aggregateTimeout: 600,
 		ignored: ['node_modules/**'],
 	},

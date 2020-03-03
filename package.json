@@ -7,23 +7,19 @@
 	"keywords": [],
 	"main": "server/server.js",
 	"scripts": {
-		"start": "node node/server.js",
-		"start:dev": "npm-run-all --parallel watch:*",
-		"watch:server": "nodemon dist/server.js",
+		"start": "node --experimental-modules src/server/server.js",
+		"start:dev": "nodemon --experimental-modules src/server/server.js",
 		"build": "webpack",
-		"watch:build": "npx webpack -w",
-		"build:dev": "NODE_ENV=development",
-		"build:dev:watch": "npm run build:dev -- --watch",
+		"build:watch": "npx webpack -w",
 		"lint": "eslint src/**/* --ext .js,jsx",
 		"lint:fix": "eslint --fix src/**/* --ext .js,jsx ",
-		"prettier": "prettier --check src/**/*.*",
-		"prettier:fix": "prettier src -- --write",
-		"test": "npm run test:unit && npm run lint && npm run prettier:check",
-		"test:unit": "jest --debug",
+		"test": "npm run test:unit && npm run lint",
+		"test:unit": "jest --debug --collect-coverage",
 		"test:unit:watch": "npm run test:unit -- --watch"
 	},
 	"dependencies": {
 		"express": "^5.0.0-alpha.7",
+		"path": "^0.12.7",
 		"react": "^16.13.0",
 		"react-dom": "^16.13.0",
 		"react-router": "^6.0.0-alpha.2",
@@ -36,6 +32,7 @@
 		"@babel/plugin-transform-arrow-functions": "^7.8.3",
 		"@babel/preset-env": "^7.8.6",
 		"@babel/preset-react": "^7.8.3",
+		"@babel/register": "^7.8.6",
 		"@commitlint/cli": "^8.3.5",
 		"@commitlint/config-conventional": "^8.3.4",
 		"babel-eslint": "^10.1.0",
@@ -54,6 +51,7 @@
 		"eslint-plugin-prettier": "^3.1.2",
 		"eslint-plugin-react": "^7.18.3",
 		"eslint-plugin-react-hooks": "^2.5.0",
+		"esm": "^3.2.25",
 		"husky": "^4.2.3",
 		"jest": "^25.1.0",
 		"lint-staged": "^10.0.8",
@@ -62,13 +60,13 @@
 		"prettier": "^1.19.1",
 		"semantic-release": "^17.0.4",
 		"semantic-release-cli": "^5.2.3",
-		"webpack": "^5.0.0-beta.13",
-		"webpack-cli": "^3.3.10"
+		"webpack": "~5.0.0-beta.13",
+		"webpack-cli": "~3.3.10"
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run lint && prettier",
-			"pre-push": "npm run test:unit"
+			"pre-commit": "npm run lint",
+			"pre-push": "npm run test:unit && npm run lint"
 		}
 	}
 }
