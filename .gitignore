@@ -1,4 +1,5 @@
 node_modules/
 coverage/
+static/
 public/js/app.js
 .vscode/

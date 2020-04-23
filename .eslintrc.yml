@@ -38,16 +38,17 @@ rules:
   import/no-extraneous-dependencies: 0
   prettier/prettier: warn
   comma-dangle:
-    [
-      'warn',
-      {
-        arrays: 'always-multiline',
-        objects: 'always-multiline',
-        imports: 'never',
-        exports: 'never',
-        functions: 'never',
-      },
-    ]
+    0,
+    # [
+    #   'warn',
+    #   {
+    #     arrays: 'always-multiline',
+    #     objects: 'always-multiline',
+    #     imports: 'never',
+    #     exports: 'never',
+    #     functions: 'never',
+    #   },
+    # ]
   semi: 1
   no-console: 0
 # globals:

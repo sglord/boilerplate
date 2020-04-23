@@ -2,18 +2,12 @@
 // add hot module injection reloading
 // add code splitting/lazy/chunking
 // make own babel plugin
-
 const path = require('path');
-// const webpack = require('webpack');
 
 module.exports = {
 	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 	entry: './src/client/index.jsx',
-	// entry:{
-	//   app: './index.js'
-	// },
-	// devtool: false,
-	devtool: 'eval-source-map',
+	devtool: 'cheap-source-map',
 	output: {
 		path: path.resolve(__dirname, 'static'),
 		// filename: "[name].[chunkhash:8].js"
@@ -25,22 +19,8 @@ module.exports = {
 	experiments: {
 		mjs: true,
 	},
-	stats: {
-		// preset: 'errors-warnings',
-		colors: true,
-		// context: '../src/components',
-		builtAt: true,
-		errors: true,
-		errorDetails: true,
-		errorStack: true,
-		logging: 'warn',
-		performance: true,
-	},
-	// bail: true, // boolean,
-	// cache: false, // boolean,
 	watchOptions: {
-		// poll: true,
-		poll: 500,
+		poll: true,
 		aggregateTimeout: 600,
 		ignored: ['node_modules/**'],
 	},

@@ -1,3 +1,6 @@
+// do the good stuff here
+// https://expressjs.com/en/advanced/best-practice-performance.html
+
 import express from 'express';
 import path from 'path';
 
