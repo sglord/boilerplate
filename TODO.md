@@ -7,3 +7,5 @@
 - context
 - cookies
 - payment
+- internationalization
+- code splitting

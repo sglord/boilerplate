@@ -7,8 +7,8 @@
 	"keywords": [],
 	"main": "server/server.js",
 	"scripts": {
-		"start": "node --experimental-modules src/server/server.js",
-		"start:dev": "nodemon --experimental-modules src/server/server.js",
+		"start": "node --experimental-modules --es-module-specifier-resolution=node --experimental-json-modules src/server/server.js",
+		"start:dev": "nodemon --experimental-modules --es-module-specifier-resolution=node --experimental-json-modules src/server/server.js",
 		"build": "webpack",
 		"build:watch": "webpack --watch --progress --info-verbosity verbose",
 		"lint": "eslint src/**/* --ext .js,jsx",
@@ -18,12 +18,16 @@
 		"test:unit:watch": "npm run test:unit -- --watch"
 	},
 	"dependencies": {
-		"express": "^5.0.0-alpha.7",
+		"express": "^5.0.0-alpha.8",
+		"mongodb": "^3.5.6",
+		"mongoose": "^5.9.10",
 		"path": "^0.12.7",
 		"react": "^16.13.0",
+		"react-beautiful-dnd": "^13.0.0",
 		"react-dom": "^16.13.0",
-		"react-router": "^6.0.0-alpha.2",
-		"react-router-dom": "^6.0.0-alpha.2"
+		"react-router": "^6.0.0-alpha.3",
+		"react-router-dom": "^6.0.0-alpha.3",
+		"styled-components": "^5.1.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.8.6",
@@ -58,7 +62,7 @@
 		"nodemon": "^2.0.2",
 		"npm-run-all": "^4.1.3",
 		"prettier": "^1.19.1",
-		"webpack": "~5.0.0-beta.13",
+		"webpack": "~5.0.0-beta.15",
 		"webpack-cli": "~3.3.10"
 	},
 	"husky": {

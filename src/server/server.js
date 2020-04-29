@@ -1,16 +1,40 @@
 // do the good stuff here
 // https://expressjs.com/en/advanced/best-practice-performance.html
-
+// custom middlewares and global middlewares
+// ddos and debouncing
 import express from 'express';
 import path from 'path';
+// import cors from 'cors';
+// import morgan from 'morgan';
+// import compression from 'compression'
+// import helmet from 'helmet'
+
+import api from './api/index';
+import dbConnect from './database/mongodb';
 
 const app = express();
-// eslint-disable-next-line no-underscore-dangle
 const __dirname = path.resolve();
 
+dbConnect();
+// app.use(morgan('common'));
+// app.use(helmet());
+// app.use(
+// 	cors({
+// 		origin: ['http://localhost:3000'],
+// 		methods: ['GET', 'POST'],
+// 		allowedHeaders: ['Content-Type', 'Authorization'],
+// 	})
+// );
+// app.use(compression())
+// error handling https://developer.okta.com/blog/2018/09/13/build-and-understand-express-middleware-through-examples
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(express.static('static'));
+// app.use(express.static(__dirname));
+
+app.use('/api', api);
 app.use('*', (req, res) => {
-	console.log('app.use');
 	console.log(path.resolve(__dirname, 'static/index.html'));
 	res.sendFile(path.resolve(__dirname, 'static/index.html'));
 });
