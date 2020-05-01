@@ -1,42 +1,43 @@
-import React from 'react';
-import {
-	Routes,
-	Route,
-	Link,
-	// useRouteMatch,
-} from 'react-router-dom';
-// import Page1 from './Page1';
-// import Page2 from './Page2';
-// import HomePage from './HomePage';
+import React, { lazy, Suspense } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+// import Kanban from './Kanban/Board';
 
-import Home from './Page1';
-import About from './Page2';
-import Kanban from './Kanban/Board';
-
-function FOF() {
+export const SuspenseWrapper = Component => (
+	// create error boundry component
+	// https://codesandbox.io/s/j4wrxnm14v
+	<Suspense fallback={<div>Loading...</div>}>
+		<Component />
+	</Suspense>
+);
+const Page1 = lazy(() => import('./Page1'));
+const Page2 = SuspenseWrapper(lazy(() => import('./Page2')));
+function Home() {
 	return (
 		<div>
-			<h2>404 noones home</h2>
-			<ul>
-				<li>
-					<Link to='/'>Home</Link>
-				</li>
-			</ul>
+			<h1>Home</h1>
+			<nav>
+				<Link to='/'>Home</Link> | <Link to='about'>About</Link> | <Link to='page1'>Page1</Link> |{' '}
+				<Link to='page2'>Page2</Link> |{' '}
+			</nav>
 		</div>
 	);
 }
 
-const App = () => (
-	<div>
-		<h1>Welcome </h1>
-		<Routes>
-			<Route path='/' element={<Home />} />
-			<Route path='/about' element={<About />} />
-			<Route path='/kanban' element={<Kanban />} />
+function About() {
+	return <h1>About</h1>;
+}
 
-			<Route path='*' element={<FOF />} />
-		</Routes>
-	</div>
-);
-
+function App() {
+	return (
+		<div>
+			<h1>Hello World</h1>
+			<Routes>
+				<Route path='/' element={<Home />} />
+				<Route path='about' element={SuspenseWrapper(About)} />
+				<Route path='page1' element={SuspenseWrapper(Page1)} />
+				<Route path='page2' element={Page2} />
+			</Routes>
+		</div>
+	);
+}
 export default App;

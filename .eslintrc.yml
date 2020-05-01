@@ -16,6 +16,7 @@ plugins:
   - react
   - jest
   - babel
+  # - jsx-ally
 
 env:
   browser: true
@@ -30,28 +31,46 @@ parserOptions:
   ecmaFeatures:
     jsx: true
 
+# globals:
+#   {
+#     describe: true,
+#     it: true,
+#     expect: true,
+#     beforeEach: true,
+#     afterEach: true,
+#     beforeAll: true,
+#     afterAll: true,
+#   }
+
 rules:
   # this should be removed at some point
   # current workaround is to have second package.json
   # https://github.com/eslint/eslint/issues/12319
   # silences  errors related stemming from second package.json
   import/no-extraneous-dependencies: 0
+  import/prefer-default-export: 0
+  react/prop-types: 0
+  react/jsx-props-no-spreading: 0
+  react/no-array-index-key: 0
+  no-unused-vars: 1
+  prefer-destructuring: 1
   prettier/prettier: warn
-  comma-dangle:
-    0,
-    # [
-    #   'warn',
-    #   {
-    #     arrays: 'always-multiline',
-    #     objects: 'always-multiline',
-    #     imports: 'never',
-    #     exports: 'never',
-    #     functions: 'never',
-    #   },
-    # ]
+  no-underscore-dangle: 0
+  comma-dangle: 0
+  global-require: 0
+
+  # [
+  #   'warn',
+  #   {
+  #     arrays: 'always-multiline',
+  #     objects: 'always-multiline',
+  #     imports: 'never',
+  #     exports: 'never',
+  #     functions: 'never',
+  #   },
+  # ]
   semi: 1
   no-console: 0
-# globals:
 # settings:
 # import/resolver:
 #   node:

@@ -1,17 +1,21 @@
-# Barebones React/TypeScript/Express/Sass Boilerplate
-This project is a starting point for a TypeScript based React app that also has a local API server using express.
+# React/Express/MongoDB/+ Boilerplate
 
-There are 2 different Webpack configurations. One for the server and one for the client.
+This project is a starting point for a React app that also has a local API server using Express.
+
+There are 2 different package.json files, one for the server and one for the client. This is due to using the Node `experimental-modules`
 
 ## Server
-The server build process compiles the TypeScript files found in `/src/server` into a single bundled JavaScript file located in the `/dist` directory.
 
 ## Client
-The client build process compiles the React app located in `/src/client` into a bundled located at `/public/js/app.js`.
 
-The client configuration will also build the Sass files found at `/src/client/scss`. The App component imports the `app.scss` file which already includes an import for Bootstrap.
+The client build process compiles the React app located in `/src/client` into a bundled located at `/static/[filename].bundle.js`.
 
 ## Running the project
-In order to run the server, use `npm run dev`, and the server will start on port 3000 (http://localhost:3000). 
 
-Webpack will watch the files. Once you save a file, you can refresh your browser to ensure you got the updated client files. If you only change server files, you *shouldn't* need to refresh.
+In order to run the server, use `npm run start`, and the server will start on port 3000 (http://localhost:3000).
+
+## Development
+
+Nodemon will watch the server files by running `npm run start:dev`.
+
+Webpack will watch the client files by running `npm run build:watch`.

@@ -3,11 +3,14 @@
 // add code splitting/lazy/chunking
 // make own babel plugin
 const path = require('path');
+const WebpackNotifierPlugin = require('webpack-notifier');
+const { DefinePlugin } = require('webpack');
 
 module.exports = {
 	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 	entry: './src/client/index.jsx',
 	devtool: 'cheap-source-map',
+	cache: true,
 	output: {
 		path: path.resolve(__dirname, 'static'),
 		// filename: "[name].[chunkhash:8].js"
@@ -24,6 +27,18 @@ module.exports = {
 		aggregateTimeout: 600,
 		ignored: ['node_modules/**'],
 	},
+	plugins: [
+		new WebpackNotifierPlugin({
+			// dyanmically gathers title
+			title: new DefinePlugin({
+				NAME: JSON.stringify(require('./package.json').name),
+			}).definitions.NAME.slice(1, -1), // slice to remove "" marks
+			emoji: true,
+			excludeWarnings: true,
+			contentImage: undefined,
+			alwaysNotify: true,
+		}),
+	],
 	// devServer: {
 	// 	hot: true,
 	// 	host: 'IP ADDRESS HERE', // for external access to dev server
@@ -37,6 +52,11 @@ module.exports = {
 	// 	quiet: true, // nothing but startup sent to console; no errors or warnings
 	// },
 	// target: "node", // enum,
+	// optimization: {
+	// 	splitChunks: {
+	// 		chunks: 'all',
+	// 	},
+	// },
 	module: {
 		rules: [
 			{
@@ -48,6 +68,7 @@ module.exports = {
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
+				include: path.resolve(__dirname, 'src/client'),
 				use: {
 					loader: 'babel-loader',
 					//   query: {

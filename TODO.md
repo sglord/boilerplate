@@ -1,11 +1,20 @@
-### Add
-- react router
-- Auth (oauth, jwt)
+# ToDo
+
 - redux + hooks
-- suspense / lazy
+- Auth (oauth, jwt, 2fa)
+- code splitting / chunks
+- hot reloading
+- Dockerize
 - bootstrap
 - context
-- cookies
+- cookies / sessions
 - payment
 - internationalization
-- code splitting
+- cypress
+- react concurrent mode
+- clusters
+- env variables
+- start scripts
+
+<!-- AU/src/root/root-module.jsx -->
+<!-- AU/src/src/shrade/logger.ts -->

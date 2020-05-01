@@ -1,4 +1,3 @@
-tabWidth: 2
 useTabs: true
 semi: true
 singleQuote: true
@@ -7,3 +6,4 @@ jsxBracketSameLine: false
 arrowParens: avoid
 bracketSpacing: true
 jsxSingleQuote: true
+printWidth: 100

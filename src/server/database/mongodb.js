@@ -3,17 +3,13 @@ import mongoose from 'mongoose';
 const URI =
 
 const dbConnect = async () => {
-	await mongoose.connect(
-		URI,
-		{ useNewUrlParser: true, useUnifiedTopology: true },
-		err => {
-			if (err) {
-				console.log('Database connection error');
-			} else {
-				console.log('Connected to database');
-			}
+	await mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
+		if (err) {
+			console.log('Database connection error');
+		} else {
+			console.log('Connected to database');
 		}
-	);
+	});
 
 	const database = mongoose.connection;
 
