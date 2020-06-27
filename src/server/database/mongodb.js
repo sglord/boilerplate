@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const URI =
+const URI = 'fill in your db endpoint here';
 
 const dbConnect = async () => {
 	await mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true }, err => {

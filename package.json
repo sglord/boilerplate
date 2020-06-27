@@ -11,6 +11,8 @@
 		"start:dev": "nodemon --experimental-modules --es-module-specifier-resolution=node --experimental-json-modules src/server/server.js",
 		"build": "webpack",
 		"build:watch": "webpack --watch --progress",
+		"docker:build": "docker build -t boilerplated .",
+		"docker:run": "docker run -p 3000:3000 --name boilerplated boilerplated",
 		"lint": "eslint src/**/* --ext .js,jsx",
 		"lint:fix": "eslint --fix src/**/* --ext .js,jsx ",
 		"prettier": "prettier --check -- src/*/**.js",
@@ -20,6 +22,8 @@
 		"test:unit:watch": "npm run test:unit -- --watch"
 	},
 	"dependencies": {
+		"axios": "^0.19.2",
+		"cors": "^2.8.5",
 		"express": "^5.0.0-alpha.8",
 		"mongodb": "^3.5.7",
 		"mongoose": "^5.9.11",

@@ -4,7 +4,7 @@
 // ddos and debouncing
 import express from 'express';
 import path from 'path';
-// import cors from 'cors';
+import cors from 'cors';
 // import morgan from 'morgan';
 // import compression from 'compression'
 // import helmet from 'helmet'
@@ -18,13 +18,13 @@ const __dirname = path.resolve();
 dbConnect();
 // app.use(morgan('common'));
 // app.use(helmet());
-// app.use(
-// 	cors({
-// 		origin: ['http://localhost:3000'],
-// 		methods: ['GET', 'POST'],
-// 		allowedHeaders: ['Content-Type', 'Authorization'],
-// 	})
-// );
+app.use(
+	cors({
+		origin: ['http://localhost:3000'],
+		methods: ['GET', 'POST'],
+		allowedHeaders: ['Content-Type', 'Authorization'],
+	})
+);
 // app.use(compression())
 // error handling https://developer.okta.com/blog/2018/09/13/build-and-understand-express-middleware-through-examples
 
