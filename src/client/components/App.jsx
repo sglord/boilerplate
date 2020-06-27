@@ -1,6 +1,6 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-// import Kanban from './Kanban/Board';
+import axios from 'axios';
 
 export const SuspenseWrapper = Component => (
 	// create error boundry component
@@ -11,26 +11,47 @@ export const SuspenseWrapper = Component => (
 );
 const Page1 = lazy(() => import('./Page1'));
 const Page2 = SuspenseWrapper(lazy(() => import('./Page2')));
-function Home() {
+
+const Home = () => {
 	return (
 		<div>
 			<h1>Home</h1>
 			<nav>
-				<Link to='/'>Home</Link> | <Link to='about'>About</Link> | <Link to='page1'>Page1</Link> |{' '}
-				<Link to='page2'>Page2</Link> |{' '}
+				<Link to='/'>Home</Link> | <Link to='/about'>About</Link> | <Link to='/page1'>Page1</Link> |{' '}
+				<Link to='/page2'>Page2</Link> |{' '}
 			</nav>
 		</div>
 	);
-}
+};
 
-function About() {
-	return <h1>About</h1>;
-}
+const About = () => {
+	return (
+		<div>
+			<h1>About</h1>
+			<nav>
+				<Link to='/'>Home</Link> | <Link to='/about'>About</Link> | <Link to='/page1'>Page1</Link> |{' '}
+				<Link to='/page2'>Page2</Link> |{' '}
+			</nav>
+		</div>
+	);
+};
 
-function App() {
+const App = () => {
+	/* remove this */
+	const [smokeTest, setSmokeTest] = useState(null);
+
+	useEffect(() => {
+		axios.get('/api').then(res => {
+			console.log(res.data);
+			setSmokeTest(res.data);
+		});
+	}, []);
+	/* remove this */
+
 	return (
 		<div>
 			<h1>Hello World</h1>
+			<h3>SmokeTest: {smokeTest}</h3>
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='about' element={SuspenseWrapper(About)} />
@@ -39,5 +60,5 @@ function App() {
 			</Routes>
 		</div>
 	);
-}
+};
 export default App;

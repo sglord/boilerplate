@@ -1,20 +1,28 @@
 # ToDo
 
-- redux + hooks
-- Auth (oauth, jwt, 2fa)
-- code splitting / chunks
-- hot reloading
-- Dockerize
+- redux + hooks + context
 - bootstrap
-- context
+- Auth (oauth, jwt, 2fa)
 - cookies / sessions
+- cypress
 - payment
 - internationalization
-- cypress
-- react concurrent mode
-- clusters
+-
 - env variables
+- nodemon docker
+- heroku docker
+- aws docker
+-
 - start scripts
+- hot reloading
+- code splitting / chunks
+- react concurrent mode
+- clusters??
+- gracefully degrade docker https://medium.com/better-programming/docker-for-node-js-in-production-b9dc0e9e48e0
+  <!-- AU/src/root/root-module.jsx -->
+  <!-- AU/src/src/shrade/logger.ts -->
 
-<!-- AU/src/root/root-module.jsx -->
-<!-- AU/src/src/shrade/logger.ts -->
+# Fixes
+
+- .bablerc conflicting with webpack config
+- prettier config file error
