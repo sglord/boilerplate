@@ -8,7 +8,7 @@ const { DefinePlugin } = require('webpack');
 
 module.exports = {
 	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-	entry: './src/client/index.jsx',
+	entry: ['./src/client'],
 	devtool: 'cheap-source-map',
 	cache: true,
 	output: {
@@ -29,7 +29,7 @@ module.exports = {
 	},
 	plugins: [
 		new WebpackNotifierPlugin({
-			// dyanmically gathers title
+			// dynamically gathers title
 			title: new DefinePlugin({
 				NAME: JSON.stringify(require('./package.json').name),
 			}).definitions.NAME.slice(1, -1), // slice to remove "" marks
