@@ -38,6 +38,10 @@ module.exports = {
 			contentImage: undefined,
 			alwaysNotify: true,
 		}),
+		new DefinePlugin({
+			'process.env': '{}',
+			global: {},
+		}),
 	],
 	// devServer: {
 	// 	hot: true,
@@ -64,6 +68,14 @@ module.exports = {
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: 'eslint-loader',
+			},
+			{
+				test: /\.(png|jp(e*)g|svg|gif)$/,
+				use: [
+					{
+						loader: 'file-loader',
+					},
+				],
 			},
 			{
 				test: /\.(js|jsx)$/,
