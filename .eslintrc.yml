@@ -9,6 +9,7 @@ extends:
   - prettier/react
   - plugin:react/recommended
   - plugin:jest/recommended
+  # - plugin:security/recommended
 
 plugins:
   - prettier
@@ -17,6 +18,7 @@ plugins:
   - jest
   - babel
   # - jsx-ally
+  # - security
 
 env:
   browser: true
@@ -58,7 +60,6 @@ rules:
   no-underscore-dangle: 0
   comma-dangle: 0
   global-require: 0
-
   # [
   #   'warn',
   #   {

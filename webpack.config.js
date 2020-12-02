@@ -9,7 +9,7 @@ const { DefinePlugin } = require('webpack');
 module.exports = {
 	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 	entry: ['./src/client'],
-	devtool: 'cheap-source-map',
+	devtool: 'eval-cheap-source-map',
 	cache: true,
 	output: {
 		path: path.resolve(__dirname, 'static'),
