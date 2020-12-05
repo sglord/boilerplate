@@ -5,12 +5,14 @@
 import express from 'express';
 import path from 'path';
 import cors from 'cors';
+import passport from 'passport';
 // import morgan from 'morgan';
 // import compression from 'compression'
 // import helmet from 'helmet'
 
-import api from './api/index';
+import api from './api/routes/index';
 import dbConnect from './database/mongodb';
+import passportConfig from './api/middleware/passport';
 
 const app = express();
 const __dirname = path.resolve();
@@ -28,10 +30,15 @@ app.use(
 // app.use(compression())
 // error handling https://developer.okta.com/blog/2018/09/13/build-and-understand-express-middleware-through-examples
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('static'));
 // app.use(express.static(__dirname));
+
+// passport authentication
+app.use(passport.initialize());
+
+passportConfig(passport);
 
 app.use('/api', api);
 app.use('*', (req, res) => {

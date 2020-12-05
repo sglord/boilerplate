@@ -54,12 +54,15 @@ rules:
   react/prop-types: 0
   react/jsx-props-no-spreading: 0
   react/no-array-index-key: 0
-  no-unused-vars: 1
+  no-unused-vars:
+      - warn
+      - argsIgnorePattern: "next"
   prefer-destructuring: 1
   prettier/prettier: warn
   no-underscore-dangle: 0
   comma-dangle: 0
   global-require: 0
+  consistent-return: 1
   # [
   #   'warn',
   #   {
@@ -71,6 +74,7 @@ rules:
   #   },
   # ]
   semi: 1
+  # remove no-console below
   no-console: 0
 # settings:
 # import/resolver:

@@ -1,4 +1,4 @@
-# React/Express/MongoDB/+ Boilerplate
+# React/Express/MongoDB/Node/+ Boilerplate
 
 This project is a starting point for a React app that also has a local API server using Express.
 

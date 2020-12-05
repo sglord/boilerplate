@@ -1,4 +1,3 @@
-// add support for es6 in node
 // add hot module injection reloading
 // add code splitting/lazy/chunking
 // make own babel plugin
@@ -17,10 +16,8 @@ module.exports = {
 		filename: '[name].bundle.js',
 	},
 	resolve: {
-		extensions: ['.js', '.jsx', '.json' /* '.ts', '.tsx' */],
-	},
-	experiments: {
-		mjs: true,
+		extensions: ['.js', '.mjs', '.jsx', '.json' /* '.ts', '.tsx' */],
+		mainFiles: ['index'],
 	},
 	watchOptions: {
 		poll: true,
@@ -68,6 +65,12 @@ module.exports = {
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: 'eslint-loader',
+			},
+			{
+				test: /\.m?js/,
+				resolve: {
+					fullySpecified: false,
+				},
 			},
 			{
 				test: /\.(png|jp(e*)g|svg|gif)$/,
