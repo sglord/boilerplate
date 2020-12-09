@@ -3,12 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { increment } from '../redux';
+import { increment } from '../redux/smoke';
 
 const Page1 = () => {
-	const stated = useSelector(state => state);
-	const { count } = stated;
-
+	const { count } = useSelector(state => state);
 	const dispatch = useDispatch();
 
 	return (

@@ -1,31 +1,11 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-export const increment = payload => {
-	return {
-		type: 'INCREMENT',
-		payload,
-	};
-};
-export const dincrement = payload => {
-	return {
-		type: 'INCREMENT',
-		payload,
-	};
-};
-export const cincrement = payload => {
-	return {
-		type: 'INCREMENT',
-		payload,
-	};
-};
+import auth from './auth';
+import smoke from './smoke';
 
-const counter = (state = { count: 6 }, action) => {
-	switch (action.type) {
-		case 'INCREMENT':
-			return { ...state, count: action.payload + state.count + 1 };
-		default:
-			return state;
-	}
-};
-
-export default createStore(counter);
+export default createStore(
+	combineReducers({ auth, smoke }),
+	composeWithDevTools(applyMiddleware(thunk))
+);

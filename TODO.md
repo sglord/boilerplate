@@ -1,25 +1,29 @@
-# ToDo
+# TODO
 
 - routes - extract duplicate code
-- passsport - refactor and add oatuh
-- redux - clean up, think about redux-toolkit
+- passport - refactor and add oauth
+- redux - think about redux-toolkit
+- https for auth?
 - ui - make redirects between password pages, wireframe it out, flow
-- make app handle logged in or not - on UI and call authenticate middleware in routes
-- front end HOC wrapper withAuth, backend authenticat middleware
-- jwt cookies/session
--
+- UI - respond to error scenarios on authentications and api responses
+- CLIENT - HOC wrapper withAuth
+- jwt cookies/session - https://stackoverflow.com/questions/60896104/sliding-window-with-expiring-jwt-refresh-token
+  - refresh token
+  - 'remeber me' - long expiration of the user
+  - revoke access - how to revoke a user access?
+  - logout? blacklist the token until the expiration date hits? https://stackoverflow.com/questions/42330013/jwt-token-refresh-sliding-sessions-and-signout
+- env variables
+- manage secrets
+- error handler server
 - Auth - https://hackernoon.com/your-node-js-authentication-tutorial-is-wrong-f1a3bf831a46
-  - rewrite proper redux store
-  - passport JWT frontEnd
-    - should we hash on the front end, so as not to send a pw in request
+  - http headers / helmet
+  - should we hash on the front end, so as not to send a pw in request
   - password reset
     - limit number of attempts or resets in certain period
-    - always
   - oauth
   - 2fa
   - rate limiting / lockout TTL - redis??
   - even better for admin
-  - http headers / helmet
   - blacklist JWT
   - SSO
   - salting
@@ -31,18 +35,15 @@
 - react-testing-library
 - bootstrap
 - @reduxjs/toolkit
-- redux saga for login? or in general?
 - internationalization - locale files
 - payment - stripe...
 - cypress
 - momentjs - for handling time
-- logging - splunk
-- error handler server
+- logging - splunk, logger utility frontEnd / backend
+- redux saga ?
 -
 - styled components
-- env variables
 - ci/cd - travis, jenkins, github actions
-- manage secrets
 - prevent query injection
 - nodemon docker
 - heroku docker
@@ -51,8 +52,6 @@
 - swagger - Open API
 - typescript
 - sockets
-- **concurrently**
--
 -
 - docker - server white listed only
 - kubernetes - auto scale
@@ -62,7 +61,6 @@
 - start scripts
 - hot reloading
 - code splitting / chunks
-- react concurrent mode
 - clusters - [node](https://medium.com/tech-tajawal/clustering-in-nodejs-utilizing-multiple-processor-cores-75d78aeb0f4f)
 - storybook / figma
 - gracefully degrade docker https://medium.com/better-programming/docker-for-node-js-in-production-b9dc0e9e48e0
@@ -86,4 +84,3 @@
 https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d
 
 - audit for vulnerable dependencies
--
