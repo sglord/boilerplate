@@ -106,9 +106,7 @@ export const login = async (req, res, next) => {
 };
 
 // is serverside logout even needed? Maybe deserialize user via passport
-export const logout = async (req, res, next) => {
-	return next();
-};
+export const logout = async (req, res, next) => next();
 
 // change an old password to a new
 export const changePassword = async (req, res, next) => {

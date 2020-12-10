@@ -181,22 +181,20 @@ const SetPassword = () => {
 	);
 };
 
-const BaseLogin = () => {
-	return (
-		<div>
-			<p>Register</p>
-			<Register />
-			<p>Login</p>
-			<Login />
-			<p>Logout</p>
-			<Logout />
-			<p>ChangePassword</p>
-			<ChangePassword />
-			<p>ResetPassword</p>
-			<ResetPassword />
-			<p>SetPassword</p>
-			<SetPassword />
-		</div>
-	);
-};
+const BaseLogin = () => (
+	<div>
+		<p>Register</p>
+		<Register />
+		<p>Login</p>
+		<Login />
+		<p>Logout</p>
+		<Logout />
+		<p>ChangePassword</p>
+		<ChangePassword />
+		<p>ResetPassword</p>
+		<ResetPassword />
+		<p>SetPassword</p>
+		<SetPassword />
+	</div>
+);
 export default BaseLogin;

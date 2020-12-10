@@ -3,3 +3,4 @@ coverage/
 static/
 public/js/app.js
 .vscode/
+secrets.js

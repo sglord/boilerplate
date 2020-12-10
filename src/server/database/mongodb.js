@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
-
-const URI = 'fill in your db endpoint here';
+import { DATABASE_URI } from '../../../secrets';
 
 const dbConnect = async () => {
-	await mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
+	await mongoose.connect(DATABASE_URI, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
 		if (err) {
 			console.log('Database connection error');
 		} else {

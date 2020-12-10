@@ -8,16 +8,16 @@
 - UI - respond to error scenarios on authentications and api responses
 - CLIENT - HOC wrapper withAuth
 - jwt cookies/session - https://stackoverflow.com/questions/60896104/sliding-window-with-expiring-jwt-refresh-token
-  - refresh token
-  - 'remeber me' - long expiration of the user
+  - refresh token sliding window - https://github.com/jacobslusser/JwtAuthRenewWebApi/blob/master/docs/Sliding-Expiration.md
+  - 'remember me' - long expiration of the user
   - revoke access - how to revoke a user access?
   - logout? blacklist the token until the expiration date hits? https://stackoverflow.com/questions/42330013/jwt-token-refresh-sliding-sessions-and-signout
-- env variables
+- env variables - dotenv?
 - manage secrets
 - error handler server
+
 - Auth - https://hackernoon.com/your-node-js-authentication-tutorial-is-wrong-f1a3bf831a46
-  - http headers / helmet
-  - should we hash on the front end, so as not to send a pw in request
+  - http headers / ****helmet****
   - password reset
     - limit number of attempts or resets in certain period
   - oauth
@@ -27,7 +27,7 @@
   - blacklist JWT
   - SSO
   - salting
-- formik / yup
+- yup
 - context
 - cookies / sessions
 - middlewares
